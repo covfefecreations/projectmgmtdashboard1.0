@@ -223,6 +223,7 @@ export function Meetings() {
                 size="sm"
                 onClick={handleExportNotes} 
                 className="flex-1 sm:flex-none"
+                aria-label="Export all meeting notes"
               >
                 <Download className="h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Export</span>
@@ -232,6 +233,7 @@ export function Meetings() {
                 size="sm"
                 onClick={() => handleEmailNotes()} 
                 className="flex-1 sm:flex-none"
+                aria-label="Email all meeting notes"
               >
                 <Mail className="h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Email All</span>
@@ -240,7 +242,7 @@ export function Meetings() {
             <div className="flex flex-col gap-2 sm:flex-row">
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button size="sm" className="flex-1 sm:flex-none">
+                  <Button size="sm" className="flex-1 sm:flex-none" aria-label="Add new meeting">
                     <Plus className="h-4 w-4 sm:mr-2" />
                     <span className="hidden sm:inline">Add Meeting</span>
                     <span className="sm:hidden">Add</span>
@@ -314,6 +316,7 @@ export function Meetings() {
                 size="sm"
                 onClick={handleDeleteAllMeetings}
                 className="flex-1 sm:flex-none"
+                aria-label="Delete all meetings"
               >
                 <Trash2 className="h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Delete All</span>
@@ -383,22 +386,23 @@ export function Meetings() {
                           </h3>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 opacity-60 hover:opacity-100">
+                              <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 opacity-60 hover:opacity-100" aria-label={`More options for meeting: ${meeting.title}`}>
                                 <MoreVertical className="h-4 w-4" />
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
-                              <DropdownMenuItem onClick={() => openEditDialog(meeting)}>
+                              <DropdownMenuItem onClick={() => openEditDialog(meeting)} aria-label={`Edit meeting: ${meeting.title}`}>
                                 <Edit className="h-4 w-4 mr-2" />
                                 Edit
                               </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleEmailNotes(meeting)}>
+                              <DropdownMenuItem onClick={() => handleEmailNotes(meeting)} aria-label={`Email meeting: ${meeting.title}`}>
                                 <Mail className="h-4 w-4 mr-2" />
                                 Email
                               </DropdownMenuItem>
                               <DropdownMenuItem 
                                 onClick={() => handleDeleteMeeting(meeting.id)}
                                 className="text-destructive"
+                                aria-label={`Delete meeting: ${meeting.title}`}
                               >
                                 <Trash2 className="h-4 w-4 mr-2" />
                                 Delete

@@ -66,7 +66,7 @@ export function Budget() {
 
           {/* Summary Cards */}
           <div className="grid gap-4 sm:grid-cols-3">
-            <Card className="shadow-sm">
+            <Card className="shadow-sm" aria-label={`Total Budget: $${totalBudget.toLocaleString()}`}>
               <CardContent className="p-6">
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-muted-foreground">Total Budget</p>
@@ -75,7 +75,7 @@ export function Budget() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm">
+            <Card className="shadow-sm" aria-label={`Spent Budget: $${spentBudget.toLocaleString()}`}>
               <CardContent className="p-6">
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-muted-foreground">Spent</p>
@@ -87,7 +87,7 @@ export function Budget() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm">
+            <Card className="shadow-sm" aria-label={`Remaining Budget: $${remainingBudget.toLocaleString()}`}>
               <CardContent className="p-6">
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-muted-foreground">Remaining</p>
