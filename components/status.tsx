@@ -255,11 +255,11 @@ export function Status() {
             <CardDescription>Overall progress and key metrics</CardDescription>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={handleExportReport}>
+            <Button variant="outline" size="sm" onClick={handleExportReport} aria-label="Export status report">
               <Download className="mr-2 h-4 w-4" />
               Export Report
             </Button>
-            <Button variant="outline" size="sm" onClick={handleRefresh} disabled={isRefreshing}>
+            <Button variant="outline" size="sm" onClick={handleRefresh} disabled={isRefreshing} aria-label="Refresh status metrics">
               <RefreshCw className={`mr-2 h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`} />
               Refresh
             </Button>
@@ -269,7 +269,7 @@ export function Status() {
       <CardContent className="space-y-8">
         {/* Project Health & Overall Progress */}
         <div className="grid gap-6 sm:grid-cols-2">
-          <Card className="shadow-sm">
+          <Card className="shadow-sm" aria-label={`Project Health: ${getHealthText(projectHealth)}`}>
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -290,7 +290,7 @@ export function Status() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-sm">
+          <Card className="shadow-sm" aria-label={`Overall project completion: ${overallCompletion}%`}>
             <CardContent className="p-6">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -311,7 +311,7 @@ export function Status() {
         {/* Metrics Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((metric) => (
-            <Card key={metric.label} className="shadow-sm">
+            <Card key={metric.label} className="shadow-sm" aria-label={`${metric.label}: ${metric.value}`}>
               <CardContent className="p-6">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">

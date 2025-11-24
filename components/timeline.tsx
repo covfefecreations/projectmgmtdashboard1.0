@@ -162,7 +162,7 @@ export function Timeline() {
         </div>
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
-            <Button size="sm" className="gap-2">
+            <Button size="sm" className="gap-2" aria-label="Add new milestone">
               <Plus className="h-4 w-4" />
               Add Milestone
             </Button>
@@ -295,6 +295,7 @@ export function Timeline() {
                           size="icon"
                           className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
                           onClick={() => handleEditMilestone(milestone)}
+                          aria-label={`Edit milestone: ${milestone.title}`}
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
@@ -303,6 +304,7 @@ export function Timeline() {
                           size="icon"
                           className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-destructive"
                           onClick={() => handleDeleteMilestone(milestone.id)}
+                          aria-label={`Delete milestone: ${milestone.title}`}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>

@@ -6,12 +6,13 @@ import { Budget } from "@/components/budget"
 import { Status } from "@/components/status"
 import { Meetings } from "@/components/meetings"
 import { ThemeToggle } from "@/components/theme-toggle"
+import ErrorBoundary from "@/components/error-boundary"
 import { FolderKanban } from "lucide-react"
 
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
+      {/* Header section with project title and theme toggle */}
       <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-3">
@@ -27,39 +28,48 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Main Content */}
+      {/* Main content area with tabbed navigation */}
       <main className="container mx-auto px-4 py-6">
-        <Tabs defaultValue="info" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
-            <TabsTrigger value="info">Info</TabsTrigger>
-            <TabsTrigger value="timeline">Timeline</TabsTrigger>
-            <TabsTrigger value="budget">Budget</TabsTrigger>
-            <TabsTrigger value="status">Status</TabsTrigger>
-            <TabsTrigger value="meetings">Meetings</TabsTrigger>
+        <ErrorBoundary>
+          <Tabs defaultValue="info" className="w-full">
+            {/* Tabbed navigation for different dashboard sections */}
+            <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid" aria-label="Project Dashboard Navigation">
+              <TabsTrigger value="info" id="info-tab" aria-controls="info-content">Info</TabsTrigger>
+              <TabsTrigger value="timeline" id="timeline-tab" aria-controls="timeline-content">Timeline</TabsTrigger>
+              <TabsTrigger value="budget" id="budget-tab" aria-controls="budget-content">Budget</TabsTrigger>
+              <TabsTrigger value="status" id="status-tab" aria-controls="status-content">Status</TabsTrigger>
+              <TabsTrigger value="meetings" id="meetings-tab" aria-controls="meetings-content">Meetings</TabsTrigger>
           </TabsList>
 
+          {/* Tab content panels */}
           <div className="mt-6">
-            <TabsContent value="info" className="m-0">
+            {/* Project Info Tab */}
+            <TabsContent value="info" className="m-0" id="info-content" role="tabpanel" aria-labelledby="info-tab">
               <ProjectInfo />
             </TabsContent>
 
-            <TabsContent value="timeline" className="m-0">
+            {/* Timeline Tab */}
+            <TabsContent value="timeline" className="m-0" id="timeline-content" role="tabpanel" aria-labelledby="timeline-tab">
               <Timeline />
             </TabsContent>
 
-            <TabsContent value="budget" className="m-0">
+            {/* Budget Tab */}
+            <TabsContent value="budget" className="m-0" id="budget-content" role="tabpanel" aria-labelledby="budget-tab">
               <Budget />
             </TabsContent>
 
-            <TabsContent value="status" className="m-0">
+            {/* Status Tab */}
+            <TabsContent value="status" className="m-0" id="status-content" role="tabpanel" aria-labelledby="status-tab">
               <Status />
             </TabsContent>
 
-            <TabsContent value="meetings" className="m-0">
+            {/* Meetings Tab */}
+            <TabsContent value="meetings" className="m-0" id="meetings-content" role="tabpanel" aria-labelledby="meetings-tab">
               <Meetings />
             </TabsContent>
           </div>
         </Tabs>
+      </ErrorBoundary>
       </main>
     </div>
   )

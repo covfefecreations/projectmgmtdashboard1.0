@@ -166,21 +166,21 @@ export function ProjectInfo() {
           <div className="flex gap-2">
             {!isEditing ? (
               <>
-                <Button variant="outline" onClick={handleExport} className="flex-1 sm:flex-none">
+                <Button variant="outline" onClick={handleExport} className="flex-1 sm:flex-none" aria-label="Export project data">
                   <Download className="mr-2 h-4 w-4" />
                   Export
                 </Button>
-                <Button onClick={() => setIsEditing(true)} className="flex-1 sm:flex-none">
+                <Button onClick={() => setIsEditing(true)} className="flex-1 sm:flex-none" aria-label="Edit project data">
                   <Edit className="mr-2 h-4 w-4" />
                   Edit Project
                 </Button>
               </>
             ) : (
               <div className="flex gap-2">
-                <Button variant="outline" onClick={handleCancel} className="flex-1 sm:flex-none">
+                <Button variant="outline" onClick={handleCancel} className="flex-1 sm:flex-none" aria-label="Cancel editing">
                   Cancel
                 </Button>
-                <Button onClick={handleSave} className="flex-1 sm:flex-none">
+                <Button onClick={handleSave} className="flex-1 sm:flex-none" aria-label="Save project data">
                   <Save className="mr-2 h-4 w-4" />
                   Save Changes
                 </Button>
@@ -381,7 +381,7 @@ export function ProjectInfo() {
           <div className="flex items-center justify-between">
             <Label>Team Members</Label>
             {isEditing && (
-              <Button variant="outline" size="sm" onClick={addTeamMember} className="h-8">
+              <Button variant="outline" size="sm" onClick={addTeamMember} className="h-8" aria-label="Add new team member">
                 <Plus className="mr-2 h-4 w-4" />
                 Add Member
               </Button>
@@ -413,7 +413,7 @@ export function ProjectInfo() {
                   />
                 </div>
                 {isEditing && (
-                  <Button variant="ghost" size="icon" onClick={() => removeTeamMember(member.id)} className="shrink-0 mt-0.5">
+                  <Button variant="ghost" size="icon" onClick={() => removeTeamMember(member.id)} className="shrink-0 mt-0.5" aria-label={`Remove ${member.name}`}>
                     <X className="h-4 w-4" />
                   </Button>
                 )}
